@@ -21,6 +21,9 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
+/**
+ *   The main class, contains the {@link Canvas}, the {@link Player}, etc
+ */
 public class Game {
 	static private Canvas canvas;
 	static public Context2d context;
