@@ -8,5 +8,5 @@ public interface GameStorage {
 	public boolean loadGame() throws Exception ;
 	public void startup() throws Exception ;
 	public void newGame() throws Exception ;
-	public String[] getCommonImages() ;
+	public String[] getCommonImages();
 }

@@ -10,6 +10,7 @@ import com.episkipoe.common.interact.MouseMode;
 import com.episkipoe.common.inventory.Inventory;
 import com.episkipoe.common.player.Player;
 import com.episkipoe.common.rooms.Room;
+import com.episkipoe.common.sound.SoundLibrary;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.canvas.dom.client.CssColor;
@@ -37,6 +38,7 @@ public class Game {
 	
 	static private GameStorage localStorage;
 	static public ImageLibrary images;
+	static public SoundLibrary sounds = new SoundLibrary();
 	static public Player player;
 	
 	
@@ -97,7 +99,7 @@ public class Game {
 		if(localStorage.getCommonImages() != null)
 			images.loadImages(Arrays.asList(localStorage.getCommonImages()));	
 	}
-
+	
 	/*
 	 * Events
 	 */
@@ -136,7 +138,7 @@ public class Game {
 	 * @return true if clicking at this point will cause something to happen
 	 */
 	static public boolean pointIsClickable(Point point) {
-		if(getInventory().intersectsWith(point) && room.showHud()) {
+		if(room.showHud() && getInventory().intersectsWith(point)) {
 			return true;
 		}
 		return room.pointIsClickable(point);

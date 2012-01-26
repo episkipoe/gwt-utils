@@ -14,10 +14,8 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 
 public class ImageLibrary {
-	Map<String,ImageElement> images;
-	public ImageLibrary() { 
-		images = new HashMap<String,ImageElement>();
-	}
+	Map<String,ImageElement> images = new HashMap<String,ImageElement>();
+	public ImageLibrary() { }
 	
 	public ImageElement getImage(String filename) {
 		if(filename == null || filename.isEmpty()) return null;

@@ -3,6 +3,7 @@
   <inherits name='com.google.gwt.user.User' />
   <inherits name='com.google.gwt.junit.JUnit' />
   <inherits name='com.google.gwt.user.theme.standard.Standard' />
+  <inherits name='com.allen_sauer.gwt.voices.gwt-voices'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='common' />
