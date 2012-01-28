@@ -1,6 +1,8 @@
 package com.episkipoe.common;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +46,6 @@ public class Game {
 	
 	static private Inventory inventory;
 	static public Inventory getInventory() {
-		if(inventory==null) inventory = new Inventory();
 		return inventory;
 	}
 	static public void newInventory() {
@@ -96,9 +97,16 @@ public class Game {
 	 */
 	static private void loadImages() {
 		images = new ImageLibrary();
-		if(localStorage.getCommonImages() != null)
-			images.loadImages(Arrays.asList(localStorage.getCommonImages()));	
+		images.loadImages(getCommonImages());	
 	}
+
+	public static Collection<String> getCommonImages() {
+		if(localStorage.getCommonImages() != null)
+			return Arrays.asList(localStorage.getCommonImages());		
+		return new ArrayList<String>();
+	}
+
+	
 	
 	/*
 	 * Events
@@ -129,7 +137,7 @@ public class Game {
 
 	public static void click(Point point) throws Exception {
 		//The Inventory button is drawn at the top-left of the screen (except in the InventoryRoom)
-		if (room.showHud() && getInventory().intersectsWith(point)) {
+		if (inventory!=null&&room.showHud() && getInventory().intersectsWith(point)) {
 			getInventory().click();
 			return;
 		}
@@ -142,7 +150,7 @@ public class Game {
 	 * @return true if clicking at this point will cause something to happen
 	 */
 	static public boolean pointIsClickable(Point point) {
-		if(room.showHud() && getInventory().intersectsWith(point)) {
+		if(inventory!=null&&room.showHud() && getInventory().intersectsWith(point)) {
 			return true;
 		}
 		return room.pointIsClickable(point);
@@ -220,7 +228,7 @@ public class Game {
 		context.setFillStyle(redrawColor);
 	    context.clearRect(0, 0, canvasWidth, canvasHeight);
 	    room.draw(context);
-		if (room.showHud()) {
+		if (inventory!=null&&room.showHud()) {
 			getInventory().draw(context);
 			String money = "$"+player.getMoney();
 			TextUtils.drawWhiteText(context, Arrays.asList(money), new Point(0,70));
@@ -252,5 +260,6 @@ public class Game {
 	public static void save() {
 		localStorage.saveGame();
 	}
+	
 
 }

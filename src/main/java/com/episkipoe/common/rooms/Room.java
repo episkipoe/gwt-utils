@@ -256,6 +256,7 @@ public abstract class Room {
 		
 		Collection<String> required = getRequiredImages();
 		if(required != null) images.addAll(required);
+		images.addAll(Game.getCommonImages());
 		
 		return images;
 	}

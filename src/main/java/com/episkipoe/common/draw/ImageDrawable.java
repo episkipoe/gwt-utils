@@ -101,6 +101,18 @@ public abstract class ImageDrawable implements Drawable, Clickable, Speaker {
 		double top = getLocation().y+img.getHeight()*0.5;
 		return new Rectangle(left, right, bottom, top);
 	}
+	
+	public int getWidth() {
+		ImageElement img = getImageElement();
+		if(img==null) return 0;
+		return img.getWidth();
+	}
+	public int getHeight() {
+		ImageElement img = getImageElement();
+		if(img==null) return 0;
+		return img.getHeight();
+	}	
+	
 	public final boolean intersectsWith(ImageDrawable other) {
 		if(other==null) {
 			System.out.println("WARNING: intersecting with a null object");
