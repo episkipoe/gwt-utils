@@ -2,7 +2,9 @@ package com.episkipoe.common.rooms;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.episkipoe.common.Door;
 import com.episkipoe.common.Game;
@@ -244,7 +246,7 @@ public abstract class Room {
 	}
 	
 	public final Collection<String> getAllImages() {
-		List<String> images = new ArrayList<String>();
+		Set<String> images = new HashSet<String>();
 		if(getBackground() != null) images.add(getBackground());
 		
 		for(Drawable d: getDrawables()) {
@@ -262,7 +264,9 @@ public abstract class Room {
 	}
 	public final boolean allImagesAreLoaded() {
 		for(String img : getAllImages()) {
-			if(!Game.images.contains(img)) return false;
+			if(!Game.images.contains(img)) {
+				return false;
+			} 
 		}		
 		return true;
 	}

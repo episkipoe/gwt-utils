@@ -25,9 +25,11 @@ public class ImageLibrary {
 		}
 		return images.get(filename);
 	}
-	
+
+	Set<String> loading = new HashSet<String>();
 	public void loadImage(String filename) {
-		if(images.containsKey(filename)) return ;
+		if(images.containsKey(filename) || loading.contains(filename)) return ;
+		loading.add(filename);
 		Image img = new Image("images/"+filename);
 		img.setTitle(filename);
 		img.addLoadHandler(new LoadHandler() {
