@@ -216,9 +216,9 @@ public class Game {
 	 */
 	static public void draw() {
 		if(player == null || room == null) return; 
-		
+	
 		context.setFillStyle(redrawColor);
-	    context.fillRect(0, 0, canvasWidth, canvasHeight);
+	    context.clearRect(0, 0, canvasWidth, canvasHeight);
 	    room.draw(context);
 		if (room.showHud()) {
 			getInventory().draw(context);

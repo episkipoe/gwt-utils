@@ -102,6 +102,10 @@ public abstract class ImageDrawable implements Drawable, Clickable, Speaker {
 		return new Rectangle(left, right, bottom, top);
 	}
 	public final boolean intersectsWith(ImageDrawable other) {
+		if(other==null) {
+			System.out.println("WARNING: intersecting with a null object");
+			return false;
+		}
 		return this.getBoundingBox().intersectsWith(other.getBoundingBox());
 	}
 	
