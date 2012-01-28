@@ -108,6 +108,10 @@ public class Game {
 		if(newMode.mouseUpHandler() != null) canvas.addMouseUpHandler(newMode.mouseUpHandler());
 		if(newMode.mouseDownHandler() != null) canvas.addMouseDownHandler(newMode.mouseDownHandler());
 	}
+	 
+	static public void setKeypressHandler(KeyPressHandler handler) {
+        canvas.addKeyPressHandler(handler);
+	}
 	
 	static public Point getPointFromEvent(MouseMoveEvent event) {
 		return new Point(event.getRelativeX(canvas.getElement()), event.getRelativeY(canvas.getElement()));

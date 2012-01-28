@@ -35,6 +35,7 @@ public class Point {
 	}
 
 	public boolean equals(Point other) {
+		if(other==null) return false;
 		return (x==other.x && y==other.y);
 	}
 	
@@ -42,6 +43,7 @@ public class Point {
 		return new Point(x*factor, y*factor);
 	}
 	public Point add(Point other) {
+		if(other==null) return this;
 		return new Point(x+other.x, y+other.y);
 	}
 
