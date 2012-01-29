@@ -219,9 +219,12 @@ public abstract class Room {
 				}
 			}
 		}
-		synchronized(clickables) {
-			for(Clickable c: getClickables()) {
-				if(c.intersectsWith(point)) c.click();
+	
+		if(!getClickables().isEmpty()) {
+			synchronized(clickables) {
+				for(Clickable c: getClickables()) {
+					if(c.intersectsWith(point)) c.click();
+				}
 			}
 		}
 	}

@@ -9,7 +9,7 @@ import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.canvas.dom.client.TextMetrics;
 
 public class TextUtils {
-	public static String font = "bold 12px sans-serif";
+	public static String font = "bold 14px sans-serif";
 	public static int font_height = 13;
 	private static final float pad=4;
 	
@@ -52,6 +52,10 @@ public class TextUtils {
 	public static void drawWhiteText(Context2d context, Collection<String> message, Point location) {
 		drawText(context, message, location,"rgba(255,255,255,1)", "rgba(0,0,0,0.8)");
 	}
+	public static void drawBlackText(Context2d context, Collection<String> message, Point location) {
+		drawText(context, message, location, "rgba(0,0,0,1.0)", "rgba(255,255,255,0.8)");
+	}
+	
 
 	/**
 	 * 
