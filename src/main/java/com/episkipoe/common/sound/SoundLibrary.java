@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.allen_sauer.gwt.voices.client.Sound;
@@ -14,6 +15,11 @@ public class SoundLibrary {
 	Map<String,Sound> sounds = new HashMap<String,Sound>();
 	public SoundLibrary() { }
 
+	public void stopAll() {
+		for(Entry<String,Sound> it : sounds.entrySet()) {
+			it.getValue().stop();
+		}
+	}
 	public void play(String fileName) {
 		Sound sound = get(fileName);
 		if(sound != null) {

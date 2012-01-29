@@ -61,8 +61,15 @@ public abstract class ImageDrawable implements Drawable, Clickable, Speaker {
 		postDraw(context);
 	}	
 
-	private class Rectangle {
-		private Rectangle(double left, double right, double bottom, double top) {
+	public class Rectangle {
+		public Rectangle(Rectangle other) { 
+			this.left = other.left;
+			this.right = other.right;
+			this.bottom = other.bottom;
+			this.top = other.top;
+		}
+		
+		public Rectangle(double left, double right, double bottom, double top) {
 			this.left = left;
 			this.right = right;
 			this.bottom = bottom;
@@ -113,6 +120,13 @@ public abstract class ImageDrawable implements Drawable, Clickable, Speaker {
 		return img.getHeight();
 	}	
 	
+	public final boolean intersectsWith(Rectangle other) {
+		if(other==null) {
+			System.out.println("WARNING: intersecting with a null object");
+			return false;
+		}
+		return this.getBoundingBox().intersectsWith(other);		
+	}
 	public final boolean intersectsWith(ImageDrawable other) {
 		if(other==null) {
 			System.out.println("WARNING: intersecting with a null object");
