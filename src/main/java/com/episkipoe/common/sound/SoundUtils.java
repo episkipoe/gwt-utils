@@ -10,4 +10,7 @@ public class SoundUtils {
 	public static void playConcurrent(String fileName) {
 		Game.sounds.play(fileName);
 	}	
+	public static void loop(String fileName) {
+		Game.sounds.play(fileName).setLooping(true);
+	}
 }

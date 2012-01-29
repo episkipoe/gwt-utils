@@ -46,5 +46,26 @@ public class Point {
 		if(other==null) return this;
 		return new Point(x+other.x, y+other.y);
 	}
-
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		float result = 1;
+		result = prime * result + x;
+		result = prime * result + y;
+		return (int) result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Point other = (Point) obj;
+		if(Math.abs(x-other.x)>0.1) return false;
+		if(Math.abs(y-other.y)>0.1) return false;
+		return true;
+	}
 }

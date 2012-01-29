@@ -20,13 +20,13 @@ public class SoundLibrary {
 			it.getValue().stop();
 		}
 	}
-	public void play(String fileName) {
+	public Sound play(String fileName) {
 		Sound sound = get(fileName);
 		if(sound != null) {
 			sound.play();
-			return;
+			return sound;
 		}
-		load(fileName);
+		return load(fileName);
 	}
 	
 	public Sound get(String fileName) {
@@ -37,7 +37,7 @@ public class SoundLibrary {
 		return sounds.get(fileName);	
 	}
 	
-	public void load(String fileName) {
+	public Sound load(String fileName) {
     	String type;
 	    if(fileName.endsWith("mp3")) {
 	    	type = Sound.MIME_TYPE_AUDIO_MPEG_MP3;
@@ -46,6 +46,7 @@ public class SoundLibrary {
 	    }
 		Sound sound = soundController.createSound(type, "sound/"+fileName, false, false);	
 	    sounds.put(fileName, sound);
+	    return sound;
 	}
 	
 	public void load(Collection<String> fileNames) {
